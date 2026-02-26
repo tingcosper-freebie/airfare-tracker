@@ -7,8 +7,8 @@
       "depart_date": "2026-04-08",
       "return_date": "2026-04-11",
       "nonstop_only": true,
-      "alert_price": 500,
-      "priority_price": 300
+      "alert_price": 320,
+      "priority_price": 280
     }
   ]
 }
