@@ -3,6 +3,41 @@ import requests
 import os
 import smtplib
 from email.mime.text import MIMEText
+
+def send_email(subject: str, body: str):
+    to_email = os.environ.get("ALERT_EMAIL")
+    app_pw = os.environ.get("GMAIL_APP_PASSWORD")
+
+    if not to_email or not app_pw:
+        print("Email secrets not set; skipping email.")
+        return
+
+    msg = MIMEText(body)
+    msg["Subject"] = subject
+    msg["From"] = to_email
+    msg["To"] = to_email
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(to_email, app_pw)
+        smtp.send_message(msg)
+
+    print("✅ Email sent")
+    if price <= route["alert_price"]:
+    subject = f"Flight Alert: {route['from']} ⇄ {route['to']} is ${price}"
+        if price <= route["priority_price"]:
+            subject = f"🔥 BUY NOW: {route['from']} ⇄ {route['to']} is ${price}"
+
+    body = f"""Deal found!
+
+Route: {route['from']} ⇄ {route['to']}
+Dates: {route['depart_date']} to {route['return_date']}
+Nonstop: {route.get('nonstop_only', True)}
+Price: ${price}
+
+Open Google Flights:
+https://www.google.com/travel/flights
+"""
+    send_email(subject, body)
 from datetime import datetime
 
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
