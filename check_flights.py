@@ -23,9 +23,9 @@ def send_email(subject: str, body: str):
 
     print("✅ Email sent")
     if price <= route["alert_price"]:
-    subject = f"Flight Alert: {route['from']} ⇄ {route['to']} is ${price}"
-        if price <= route["priority_price"]:
-            subject = f"🔥 BUY NOW: {route['from']} ⇄ {route['to']} is ${price}"
+        subject = f"Flight Alert: {route['from']} ⇄ {route['to']} is ${price}"
+            if price <= route["priority_price"]:
+                subject = f"🔥 BUY NOW: {route['from']} ⇄ {route['to']} is ${price}"
 
     body = f"""Deal found!
 
