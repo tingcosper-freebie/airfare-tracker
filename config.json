@@ -1,0 +1,14 @@
+{
+  "email": "tingcosper@gmail.com",
+  "routes": [
+    {
+      "from": "PHL",
+      "to": "CHS",
+      "depart_date": "2026-04-08",
+      "return_date": "2026-04-11",
+      "nonstop_only": true,
+      "alert_price": 500,
+      "priority_price": 300
+    }
+  ]
+}
