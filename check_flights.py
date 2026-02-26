@@ -22,10 +22,13 @@ def send_email(subject: str, body: str):
         smtp.send_message(msg)
 
     print("✅ Email sent")
-    if price <= route["alert_price"]:
-        subject = f"Flight Alert: {route['from']} ⇄ {route['to']} is ${price}"
-            if price <= route["priority_price"]:
-                subject = f"🔥 BUY NOW: {route['from']} ⇄ {route['to']} is ${price}"
+# Alert logic
+if price <= route["alert_price"]:
+
+    subject = f"Flight Alert: {route['from']} ⇄ {route['to']} is ${price}"
+
+    if price <= route["priority_price"]:
+        subject = f"🔥 BUY NOW: {route['from']} ⇄ {route['to']} is ${price}"
 
     body = f"""Deal found!
 
@@ -37,7 +40,11 @@ Price: ${price}
 Open Google Flights:
 https://www.google.com/travel/flights
 """
+
     send_email(subject, body)
+
+else:
+    print(f"No alert. Price ${price} is above threshold ${route['alert_price']}")
 from datetime import datetime
 
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
