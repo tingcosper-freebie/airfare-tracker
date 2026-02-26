@@ -1,4 +1,4 @@
-.github/workflows/
+.github/workflows/daily.yml
 name: Daily Flight Check
 
 on:
